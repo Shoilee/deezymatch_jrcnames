@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Specifiy GPU
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --job-name=DeezyOnJRCnames
+#SBATCH --time=8:00:00
+#SBATCH -n 18
+
+module load 2022
+module load Anaconda3/2022.05
+
+# activate the environment
+eval "$(conda shell.bash hook)"
+source activate py39deezy
+
+python train_on_jrc_names.py inputs/input_dfm.yaml data/dataset-string-matching-train.txt jrc001 > output.txt
+
+conda deactivate dh_linking

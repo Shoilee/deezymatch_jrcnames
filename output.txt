@@ -1,0 +1,69 @@
+[92m2023-10-20 15:29:57[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mread input file: inputs/input_dfm.yaml[0m
+[92m2023-10-20 15:29:57[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32mpytorch will use: cuda[0m
+[92m2023-10-20 15:29:57[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mread CSV file: data/dataset-string-matching-train.txt[0m
+[92m2023-10-20 15:30:13[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32mnumber of labels, True: 1750000 and False: 1750000[0m
+[92m2023-10-20 15:30:13[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mSplitting the Dataset[0m
+[92m2023-10-20 15:30:15[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mfinish splitting the Dataset. User time: 1.630370855331421[0m
+[92m2023-10-20 15:30:15[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msplits are as follow:
+split
+train    2450000
+val       525000
+test      525000
+Name: count, dtype: int64[0m
+[92m2023-10-20 15:30:15[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mstart creating a lookup table and convert characters to indices[0m
+[92m2023-10-20 15:30:22[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32m-- create vocabulary[0m
+[92m2023-10-20 15:34:20[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32m-- convert tokens to indices[0m
+[92m2023-10-20 15:34:22[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32m-- create a lookup table for tokens[0m
+[92m2023-10-20 15:34:22[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32m-- read list of characters from ./inputs/characters_v001.vocab[0m
+[92m2023-10-20 15:34:22[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32m-- Length of vocabulary: 148849[0m
+
+
+
+[92m2023-10-20 15:36:21[0m [95mgcn30[0m [1m[90m[INFO][0m [95m******************************[0m
+[92m2023-10-20 15:36:21[0m [95mgcn30[0m [1m[90m[INFO][0m [95m**** (Bi-directional) GRU ****[0m
+[92m2023-10-20 15:36:21[0m [95mgcn30[0m [1m[90m[INFO][0m [95m******************************[0m
+[92m2023-10-20 15:36:21[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mread inputs[0m
+[92m2023-10-20 15:36:21[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mcreate a two_parallel_rnns model[0m
+[92m2023-10-20 15:36:23[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32mstart fitting parameters[0m
+[92m2023-10-20 15:36:23[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mNumber of batches: 245000[0m
+[92m2023-10-20 15:36:23[0m [95mgcn30[0m [1m[90m[INFO][0m [2;32mNumber of epochs: 5[0m
+  0%|          | 0/5 [00:00<?, ?it/s]
+
+
+
+====================
+Total number of params: 9105663
+
+two_parallel_rnns (
+  (emb): Embedding(148849, 60), weights=((148849, 60),), parameters=8930940
+  (rnn_1): GRU(60, 60, num_layers=2, dropout=0.01, bidirectional=True), weights=((180, 60), (180, 60), (180,), (180,), (180, 60), (180, 60), (180,), (180,), (180, 120), (180, 60), (180,), (180,), (180, 120), (180, 60), (180,), (180,)), parameters=109440
+  (attn_step1): Linear(in_features=120, out_features=60, bias=True), weights=((60, 120), (60,)), parameters=7260
+  (attn_step2): Linear(in_features=60, out_features=1, bias=True), weights=((1, 60), (1,)), parameters=61
+  (fc1): Linear(in_features=480, out_features=120, bias=True), weights=((120, 480), (120,)), parameters=57720
+  (fc2): Linear(in_features=120, out_features=2, bias=True), weights=((2, 120), (2,)), parameters=242
+)
+====================
+
+
+[92m2023-10-20 16:57:26[0m [95mgcn30[0m [1m[90m[INFO][0m [0;33m10/20/2023_16:57:26 -- Epoch: 1/5; Train; loss: 0.101; acc: 0.964; precision: 0.963, recall: 0.967, macrof1: 0.964, weightedf1: 0.964[0m
+[92m2023-10-20 17:05:28[0m [95mgcn30[0m [1m[90m[INFO][0m [1;31m10/20/2023_17:05:28 -- Epoch: 1/5; Valid; loss: 0.072; acc: 0.976; precision: 0.974, recall: 0.979, macrof1: 0.976, weightedf1: 0.976[0m
+[92m2023-10-20 17:05:28[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model[0m
+[92m2023-10-20 18:26:04[0m [95mgcn30[0m [1m[90m[INFO][0m [0;33m10/20/2023_18:26:04 -- Epoch: 2/5; Train; loss: 0.072; acc: 0.976; precision: 0.975, recall: 0.978, macrof1: 0.976, weightedf1: 0.976[0m
+[92m2023-10-20 18:34:00[0m [95mgcn30[0m [1m[90m[INFO][0m [1;31m10/20/2023_18:34:00 -- Epoch: 2/5; Valid; loss: 0.073; acc: 0.976; precision: 0.974, recall: 0.979, macrof1: 0.976, weightedf1: 0.976[0m
+[92m2023-10-20 18:34:00[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model[0m
+[92m2023-10-20 19:54:30[0m [95mgcn30[0m [1m[90m[INFO][0m [0;33m10/20/2023_19:54:30 -- Epoch: 3/5; Train; loss: 0.070; acc: 0.977; precision: 0.976, recall: 0.979, macrof1: 0.977, weightedf1: 0.977[0m
+[92m2023-10-20 20:02:26[0m [95mgcn30[0m [1m[90m[INFO][0m [1;31m10/20/2023_20:02:26 -- Epoch: 3/5; Valid; loss: 0.071; acc: 0.977; precision: 0.976, recall: 0.979, macrof1: 0.977, weightedf1: 0.977[0m
+[92m2023-10-20 20:02:26[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model[0m
+[92m2023-10-20 21:23:03[0m [95mgcn30[0m [1m[90m[INFO][0m [0;33m10/20/2023_21:23:03 -- Epoch: 4/5; Train; loss: 0.070; acc: 0.977; precision: 0.976, recall: 0.979, macrof1: 0.977, weightedf1: 0.977[0m
+[92m2023-10-20 21:31:03[0m [95mgcn30[0m [1m[90m[INFO][0m [1;31m10/20/2023_21:31:03 -- Epoch: 4/5; Valid; loss: 0.071; acc: 0.977; precision: 0.976, recall: 0.979, macrof1: 0.977, weightedf1: 0.977[0m
+[92m2023-10-20 21:31:03[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model[0m
+[92m2023-10-20 22:52:05[0m [95mgcn30[0m [1m[90m[INFO][0m [0;33m10/20/2023_22:52:05 -- Epoch: 5/5; Train; loss: 0.073; acc: 0.976; precision: 0.975, recall: 0.977, macrof1: 0.976, weightedf1: 0.976[0m
+[92m2023-10-20 23:00:03[0m [95mgcn30[0m [1m[90m[INFO][0m [1;31m10/20/2023_23:00:03 -- Epoch: 5/5; Valid; loss: 0.079; acc: 0.974; precision: 0.970, recall: 0.978, macrof1: 0.974, weightedf1: 0.974[0m
+[92m2023-10-20 23:00:03[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model[0m
+[92m2023-10-20 23:00:03[0m [95mgcn30[0m [1m[90m[INFO][0m [1;32msaving the model with least valid loss (checkpoint: 4) at ./models/jrc001/jrc001.model[0m
+
+
+
+====================
+User time: 26621.5897
+====================
