@@ -30,13 +30,12 @@ DeezyMatch library provides script for [data_processing](https://github.com/Livi
 This data preparation is done using the local script [prepare_data_deezymatch.py](prepare_data_deezymatch.py).
 
 
-## Train deezymatch on JRCnames
+## Train DeezyMatch on JRC-Names
 
 Training is done using the [job script](../cluster.job) on snellius cluster.
 
 
 ## [What is JRC-Names?](https://data.jrc.ec.europa.eu/dataset/jrc-emm-jrc-names#publications)
-  - Available for download since September 2011, offering name variant lists and related software.
   - Developed by the European Commission's Joint Research Centre (JRC) as a multilingual resource for person and organization names; a by-product of the Europe Media Monitor (EMM)
   - Contains extensive lists of names and their numerous spelling variants, crossing various scripts (Latin, Greek, Arabic, Cyrillic, Japanese, Chinese, etc.).
   - The new linked data edition, accessible through the European Union's Open Data Portal, provides enhanced information compared to previous releases:
@@ -47,10 +46,47 @@ Training is done using the [job script](../cluster.job) on snellius cluster.
 
 ### Stat
 
-### Resources
+- 307,000 distinct entities with 333,000 variants.
+-  the database included names spelt in 27 different scripts. The most frequently used scripts are:
+   -   Latin (including English and most other European languages), 
+   -   Cyrillic (e.g. Russian and Bulgarian), 
+   -   Arabic (including Farsi), 
+   -   Japanese (Han, Hiragana and Katakana) and 
+   -   Chinese Han (simplified variant)
+- 64% of the names in JRC-Names do not have additional spelling variants. 
+- For 28% of the names, JRC-Names knows two or three spellings. 
+- There are 3760 entities with ten spellings or more, and 
+- 37 entities with over 100 spelling variants.  
 
+
+### Resources
+#### Publication
+- Steinberger Ralf, Bruno Pouliquen, Mijail Kabadjov, Jenya Belyaeva & Erik van der Goot (2011). JRC-Names: A freely available, highly multilingual named entity resource. Proceedings of the 8th International Conference Recent Advances in Natural Language Processing (RANLP). Hissar, Bulgaria, 12-14 September 2011.
+- Ehrmann Maud, Guillaume Jacquet & Ralf Steinberger (2016). 
+JRC-Names: Multilingual Entity Name Variants and Titles as Linked Data. Semantic Web Journal (March 2016).
+#### Dataset
+- https://data.jrc.ec.europa.eu/dataset/jrc-emm-jrc-names#publications
 ### Cite As
 
+```
+Jacquet, Guillaume; Verile, Marco (2015): JRC-Names RDF: Person and organisation spelling variants as found in multilingual news articles. European Commission, Joint Research Centre (JRC) [Dataset] PID: http://data.europa.eu/89h/jrc-emm-jrc-names
+```
+
+OR, BibTeX
+
+```
+@techreport{JRC-Names2016 ,
+author = {Guillaume Jacquet and Marco Verile},
+year = 2015 ,
+title = {JRC-Names RDF: Person and organisation spelling variants as found in multilingual news articles},
+institution = {European Commission, Joint Research Centre (JRC)},
+type = {Dataset},
+note = {\url{http://data.europa.eu/89h/jrc-emm-jrc-names}}
+}
+
+```
+
+### Data Description
 ```
 |--- data
 |   |---dataset_final_jrc_name: contains 5 column [name1, name2, match?(0/1), lang1, lang2]
