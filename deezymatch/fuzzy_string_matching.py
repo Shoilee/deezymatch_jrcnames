@@ -10,7 +10,7 @@ def read_file(file):
 
 
 # TODO add more languages; consider the language spoken by dutch colony or just specify I did it for two language
-def retrieve_uri_from_label(label, df=pandas.read_pickle("../k_fold_validation/data/ground_truth.pkl")):
+def retrieve_uri_from_label(label, df=pandas.read_pickle("data/ground_truth.pkl")):
     wiki_uri_list = []
 
     for i, row in df.iterrows():
@@ -20,8 +20,8 @@ def retrieve_uri_from_label(label, df=pandas.read_pickle("../k_fold_validation/d
     return list(set(wiki_uri_list))
 
 
-def run(source_file, destination_file, directory='../k_fold_validation/data/'):
-    df = pandas.read_pickle("../k_fold_validation/data/ground_truth.pkl")
+def run(source_file, destination_file, directory='../data/'):
+    df = pandas.read_pickle("data/ground_truth.pkl")
 
     # DICTIONARY MAPS ID TO ALL DIFFERENT NAME VARIANTS
     id_to_names = dict()
